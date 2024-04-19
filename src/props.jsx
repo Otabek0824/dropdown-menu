@@ -109,7 +109,7 @@ const FlyoutLink = ({ children, href, FlyoutContent }) => {
 };
 
 const FlyoutLink1 = ({ children, href, FlyoutContent }) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const showFlyout = open && FlyoutContent;
   return (
