@@ -19,11 +19,11 @@ const Props = () => {
                 vehicles
               </a>
             </FlyoutLink>
-            <FlyoutLink2 FlyoutContent={PricingContent} href="#">
+            <FlyoutLink1 FlyoutContent={PricingContent1} href="#">
               <a className="hover:bg-gray-300 px-[16px] py-[10px]" href="#">
                 energy
               </a>
-            </FlyoutLink2>
+            </FlyoutLink1>
             <FlyoutLink2 FlyoutContent={PricingContent} href="#">
               <a className="hover:bg-gray-300 px-[16px] py-[10px]" href="#">
                 charging
@@ -86,6 +86,44 @@ const FlyoutLink = ({ children, href, FlyoutContent }) => {
             style={{ transform: showFlyout ? "scaleX(1)" : "scaleX(0)" }}
             className="absolute -bottom-2 -left-2 -right-2 h-1 origin-left rounded-full bg-indigo-300 transition-transform duration-500 ease-out"
           ></span> */}
+      </a>
+      <AnimatePresence>
+        {showFlyout && (
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 15 }}
+            style={{ x: "-50%" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="absolute left-1/2 top-12 bg-white text-black"
+          >
+            <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent">
+              {" "}
+            </div>
+            <FlyoutContent />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+const FlyoutLink1 = ({ children, href, FlyoutContent }) => {
+  const [open, setOpen] = useState(true);
+
+  const showFlyout = open && FlyoutContent;
+  return (
+    <div
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      className="group relative h-fit w-fit"
+    >
+      <a
+        style={{ transform: "scaleX(0.5)" }}
+        className="text-black relative"
+        href={href}
+      >
+        {children}
       </a>
       <AnimatePresence>
         {showFlyout && (
@@ -230,5 +268,80 @@ const PricingContent2 = () => {
 // style work
 const PricingContent = () => {
   return <div className="h-26  bg-white p-6 shadow-xl"></div>;
+};
+
+const PricingContent1 = () => {
+  return (
+    <div className="h-[400px] flex w-[1570px] justify-center gap-[50px] px-[100px] items-center bg-white p-6 shadow-xl">
+      <div className="flex items-center justify-between w-[55%]">
+        <div className="flex flex-col">
+          <img
+            className="h-[100px] rounded-[20px]"
+            src="/panel.jpg"
+            alt="img"
+          />
+          <div className="flex flex-col items-center">
+            <h1 className="text-black">Solar panels</h1>
+            <div className="flex gap-[50px]">
+              <h1 className="underline">Learn</h1>
+              <h1 className="underline">Order</h1>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <img
+            className="h-[100px] rounded-[20px]"
+            src="/panel.jpg"
+            alt="img"
+          />
+          <div className="flex flex-col items-center">
+            <h1 className="text-black">Solar panels</h1>
+            <div className="flex gap-[50px]">
+              <h1 className="underline">Learn</h1>
+              <h1 className="underline">Order</h1>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <img
+            className="h-[100px] rounded-[20px]"
+            src="/panel.jpg"
+            alt="img"
+          />
+          <div className="flex flex-col items-center">
+            <h1 className="text-black">Solar panels</h1>
+            <div className="flex gap-[50px]">
+              <h1 className="underline">Learn</h1>
+              <h1 className="underline">Order</h1>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <img
+            className="h-[100px] rounded-[20px]"
+            src="/panel.jpg"
+            alt="img"
+          />
+          <div className="flex flex-col items-center">
+            <h1 className="text-black">Solar panels</h1>
+            <div className="flex gap-[50px]">
+              <h1 className="underline">Learn</h1>
+              <h1 className="underline">Order</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-[30%] border-s-[2px] ps-[100px] border-gray flex flex-col gap-[10px]">
+        <h1>Schedule a Consultation</h1>
+        <h1>Why Solar</h1>
+        <h1>Incentives</h1>
+        <h1>Schedule a Consultation</h1>
+        <h1>Support</h1>
+        <h1>Partner with Tesla</h1>
+        <h1>Commercial</h1>
+        <h1>Utilities</h1>
+      </div>
+    </div>
+  );
 };
 export default Props;
